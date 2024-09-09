@@ -18,7 +18,7 @@ import java.util.List;
 @Service
 public class GoogleSheetsService {
     private static Sheets sheetsService;
-    private static final String SPREADSHEET_ID = "1iiHBIWYkEpDFZKkRxoiUC8nrqlTsqtnDw7HPgILNm30";
+    private static final String SPREADSHEET_ID = System.getenv("SPREADSHEET_ID");
 
     // Constructor to initialize Google Sheets Service
     public GoogleSheetsService() throws GeneralSecurityException, IOException {
@@ -27,7 +27,8 @@ public class GoogleSheetsService {
 
     // Initializes the Google Sheets API client
     private Sheets getSheetsService() throws GeneralSecurityException, IOException {
-        FileInputStream serviceAccountStream = new FileInputStream("src/main/resources/integral-legend-420611-2c337f30addb.json");
+        String credentialsPath = System.getenv("GOOGLE_APPLICATION_CREDENTIALS");
+        FileInputStream serviceAccountStream = new FileInputStream(credentialsPath);
 
         GoogleCredentials credentials = GoogleCredentials.fromStream(serviceAccountStream)
                 .createScoped(Collections.singleton(SheetsScopes.SPREADSHEETS));
