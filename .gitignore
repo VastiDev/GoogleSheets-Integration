@@ -38,3 +38,5 @@ data/products_db.*
 # Ignore lock and trace files
 *.lock
 *.trace.db
+
+src/main/resources/integral-legend-*.json
