@@ -31,3 +31,10 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# Ignore H2 database files
+data/products_db.*
+
+# Ignore lock and trace files
+*.lock
+*.trace.db
